@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estado de Nuestros Sistemas</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+</head>
+
+<body>
+    <div class="header">
+        <h1 id="main-status-heading">Cargando Estado...</h1>
+        <a href="#" class="subscribe-button">SUSCRIBIRSE A ACTUALIZACIONES</a>
+    </div>
+
+    <div class="container">
+        <p class="uptime-info">Uptime en los últimos 90 días. <a href="#">Ver historial de uptime.</a></p>
+
+        <div id="services-container">
+        </div>
+    </div>
+
+    <div id="historyModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2 id="modal-service-name"></h2>
+            <div class="modal-summary">
+                <p>Uptime de los últimos 90 días: <span id="modal-overall-uptime"></span></p>
+                <div class="legend">
+                    <span class="legend-item operational-legend"></span> Operacional
+                    <span class="legend-item partial-legend"></span> Parcial
+                    <span class="legend-item down-legend"></span> Caído
+                    <span class="legend-item no-data-legend"></span> Sin Datos
+                </div>
+            </div>
+            <div class="calendar-header">
+                <span class="calendar-day-name">Dom</span>
+                <span class="calendar-day-name">Lun</span>
+                <span class="calendar-day-name">Mar</span>
+                <span class="calendar-day-name">Mié</span>
+                <span class="calendar-day-name">Jue</span>
+                <span class="calendar-day-name">Vie</span>
+                <span class="calendar-day-name">Sáb</span>
+            </div>
+            <div class="calendar-container" id="calendar-container"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

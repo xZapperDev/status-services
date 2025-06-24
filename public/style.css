@@ -1,0 +1,412 @@
+body {
+    font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    margin: 0;
+    background-color: #f5f8fa;
+    color: #333;
+    line-height: 1.6;
+}
+
+.header {
+    background-color: #28a745;
+    color: white;
+    padding: 25px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.subscribe-button {
+    background-color: #007bff;
+    color: white;
+    padding: 12px 20px;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: 500;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+}
+
+.subscribe-button:hover {
+    background-color: #0056b3;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 30px auto;
+    padding: 30px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.uptime-info {
+    text-align: right;
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 25px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+}
+
+.uptime-info a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.uptime-info a:hover {
+    text-decoration: underline;
+}
+
+.service-card {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 25px;
+    background-color: #fff;
+    transition: box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+.service-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.service-name {
+    font-weight: bold;
+    font-size: 20px;
+    color: #222;
+}
+
+.service-status {
+    font-weight: 600;
+    font-size: 16px;
+    padding: 5px 10px;
+    border-radius: 4px;
+    color: white;
+    background-color: #28a745;
+}
+
+.service-status.down {
+    background-color: #dc3545;
+}
+
+.service-status.loading {
+    background-color: #ffc107;
+}
+
+.service-status.error {
+    background-color: #6c757d;
+}
+
+.uptime-bars {
+    display: flex;
+    height: 18px;
+    width: 100%;
+    margin-top: 15px;
+    border-radius: 4px;
+    overflow: hidden;
+    background-color: #e9ecef;
+}
+
+.bar {
+    flex-grow: 1;
+    height: 100%;
+    background-color: #28a745;
+}
+
+.bar.down {
+    background-color: #dc3545;
+}
+
+.bar.partial-downtime {
+    background-color: #ffc107;
+}
+
+.bar[title]:hover {
+    cursor: help;
+}
+
+.uptime-percentage {
+    font-size: 15px;
+    color: #555;
+    text-align: right;
+    margin-top: 10px;
+    font-weight: 500;
+}
+
+.history-button {
+    background-color: #007bff;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-top: 15px;
+    transition: background-color 0.3s ease;
+}
+
+.history-button:hover {
+    background-color: #0056b3;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 30px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 700px;
+    /* HACIENDO EL MODAL MÁS PEQUEÑO */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    position: relative;
+    animation-name: animatetop;
+    animation-duration: 0.4s;
+}
+
+@keyframes animatetop {
+    from {
+        top: -300px;
+        opacity: 0
+    }
+
+    to {
+        top: 0;
+        opacity: 1
+    }
+}
+
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 32px;
+    font-weight: bold;
+    cursor: pointer;
+    line-height: 20px;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-summary {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.modal-summary p {
+    margin: 0;
+    font-size: 1.1em;
+    font-weight: 500;
+}
+
+.legend {
+    display: flex;
+    gap: 15px;
+    font-size: 0.9em;
+    color: #666;
+}
+
+.legend-item {
+    width: 15px;
+    height: 15px;
+    border-radius: 3px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+.operational-legend {
+    background-color: #28a745;
+}
+
+.partial-legend {
+    background-color: #ffc107;
+}
+
+.down-legend {
+    background-color: #dc3545;
+}
+
+.no-data-legend {
+    background-color: #e9ecef;
+}
+
+/* Styles for Calendar Header (Day Names) */
+.calendar-header {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+    padding: 5px 10px;
+    background-color: #f0f0f0;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    font-weight: bold;
+    color: #555;
+    text-align: center;
+    font-size: 0.85em;
+}
+
+.calendar-day-name {
+    padding: 5px 0;
+}
+
+.calendar-container {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-top: none;
+    /* No top border, as header has one */
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.calendar-day {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1 / 1;
+    border-radius: 5px;
+    font-size: 0.8em;
+    /* HACIENDO LOS DÍAS MÁS PEQUEÑOS */
+    font-weight: bold;
+    color: white;
+    background-color: #e9ecef;
+    padding: 5px;
+    text-align: center;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    cursor: help;
+}
+
+.calendar-day:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.calendar-day.operational {
+    background-color: #28a745;
+}
+
+.calendar-day.partial-downtime {
+    background-color: #ffc107;
+}
+
+.calendar-day.down {
+    background-color: #dc3545;
+}
+
+.calendar-day.empty {
+    background-color: #f9f9f9;
+    /* Color de fondo del contenedor */
+    box-shadow: none;
+    cursor: default;
+    color: #f9f9f9;
+    /* Hace el número invisible */
+}
+
+.calendar-day.empty:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px;
+    }
+
+    .header h1 {
+        margin-bottom: 15px;
+        font-size: 24px;
+    }
+
+    .container {
+        margin: 20px 15px;
+        padding: 20px;
+    }
+
+    .service-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .service-name {
+        margin-bottom: 8px;
+    }
+
+    .uptime-bars {
+        height: 15px;
+    }
+
+    .modal-content {
+        width: 95%;
+        padding: 20px;
+        max-width: 95%;
+    }
+
+    .modal-summary {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .legend {
+        margin-top: 10px;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .calendar-header,
+    .calendar-container {
+        gap: 5px;
+    }
+
+    .calendar-day {
+        font-size: 0.6em;
+        /* Aún más pequeño en móviles */
+        padding: 2px;
+    }
+}
